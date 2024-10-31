@@ -1,9 +1,11 @@
-import { createContext, useContext } from 'react';
+import React from 'react';
 
-const PasswordContext = createContext();
+const PasswordContext = React.createContext({
+  passwords: [],
+  addPassword: (title, password) => {},
+  deletePassword: (index) => {},
+  editPassword: (index, title, password) => {},
+});
 
-export const usePasswordContext = () => {
-  return useContext(PasswordContext);
-};
 
 export default PasswordContext;

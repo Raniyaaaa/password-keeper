@@ -3,12 +3,12 @@ import PasswordContext from '../PasswordContext';
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const { passwords } = useContext(PasswordContext);
+  const passCtx = useContext(PasswordContext);
 
-  // Filter passwords based on the search term
-  const filteredPasswords = passwords.filter(p =>
-    p.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredPasswords = passCtx.passwords.filter(p =>
+    p.title.toLowerCase().includes(searchTerm?.toLowerCase() || "")
+);
+
 
   return (
     <div>

@@ -1,19 +1,19 @@
-import React from 'react';
-import { usePasswordContext } from '../PasswordContext';
+import React, { useContext } from 'react';
+import PasswordContext from '../PasswordContext';
 import PasswordItem from "./PasswordItem";
 
-const PasswordList = ({ setInputOpen, setEditIndex }) => {
-  const { passwords } = usePasswordContext();
+const PasswordList = (props) => {
+  const passCtx = useContext(PasswordContext)
 
   return (
     <ul>
-      {passwords.map((item, index) => (
+      {passCtx.passwords.map((item, index) => (
         <PasswordItem
           key={index}
           item={item}
           index={index}
-          setInputOpen={setInputOpen}
-          setEditIndex={setEditIndex}
+          setInputOpen={props.setInputOpen}
+          setEditIndex={props.setEditIndex}
         />
       ))}
     </ul>

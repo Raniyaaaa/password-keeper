@@ -1,18 +1,18 @@
-import React from 'react';
-import { usePasswordContext } from "../PasswordContext";
+import React,{useContext} from 'react';
+import PasswordContext from "../PasswordContext";
 
-const PasswordItem = ({ item, index, setInputOpen, setEditIndex }) => {
-  const { deletePassword } = usePasswordContext();
+const PasswordItem = (props) => {
+  const passCtx = useContext(PasswordContext);
 
   const handleEdit = () => {
-    setEditIndex(index);
-    setInputOpen(true);
+    props.setEditIndex(props.index);
+    props.setInputOpen(true);
   };
 
   return (
     <li>
-      {item.title} - {item.password}
-      <button onClick={() => deletePassword(index)}>Delete</button>
+      {props.item.title} - {props.item.password}
+      <button onClick={() => passCtx.deletePassword(props.index)}>Delete</button>
       <button onClick={handleEdit}>Edit</button>
     </li>
   );
