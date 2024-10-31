@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-import PasswordContext from '../PasswordContext';
+import React  from 'react';
 
 const Search = (props) => {
   

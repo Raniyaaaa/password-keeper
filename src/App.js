@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import "./App.css"
 import PasswordContext from './components/PasswordContext';
 import PasswordList from './components/Password/PasswordList';
 import InputForm from './components/UI/InputForm';
@@ -25,11 +26,14 @@ const App = () => {
   };
   
   return (
-    <div>
+    <div className="content">
       <h1>Password Keeper...</h1>
       <h3>{`Total Passwords: ${ctx.passwords.length}`}</h3>
       <AddPasswordButton setInputOpen={setInputOpen} />
+      <br></br>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+      <br></br>
+      <br></br>
       <br></br>
       {ctx.passwords.length>0 && `All Passwords : `}<br></br>
       <PasswordList passwords={filteredPasswords} setInputOpen={setInputOpen} setEditIndex={setEditIndex} />
