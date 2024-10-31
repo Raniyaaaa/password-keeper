@@ -8,9 +8,16 @@ import AddPasswordButton from './components/UI/Button/AddPasswordButton';
 const App = () => {
   const [InputOpen, setInputOpen] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
   const ctx = useContext(PasswordContext);
   console.log(ctx.passwords)
   console.log(ctx.passwords.length)
+
+  
+
+  const filteredPasswords = ctx.passwords.filter(p =>
+    p.title.toLowerCase().includes(searchTerm?.toLowerCase() || "")
+  );
 
   const handleCloseForm = () => {
     setEditIndex(null);
@@ -22,10 +29,10 @@ const App = () => {
       <h1>Password Keeper...</h1>
       <h3>{`Total Passwords: ${ctx.passwords.length}`}</h3>
       <AddPasswordButton setInputOpen={setInputOpen} />
-      <Search/>
+      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
       <br></br>
       {ctx.passwords.length>0 && `All Passwords : `}<br></br>
-      <PasswordList setInputOpen={setInputOpen} setEditIndex={setEditIndex} />
+      <PasswordList passwords={filteredPasswords} setInputOpen={setInputOpen} setEditIndex={setEditIndex} />
       {InputOpen && (
         <InputForm 
         setInputOpen={setInputOpen} 

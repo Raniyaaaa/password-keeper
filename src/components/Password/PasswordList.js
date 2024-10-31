@@ -7,7 +7,7 @@ const PasswordList = (props) => {
 
   return (
     <ul>
-      {passCtx.passwords.map((item, index) => (
+      {props.passwords.map((item, index) => (
         <PasswordItem
           key={index}
           item={item}
